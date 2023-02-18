@@ -4,7 +4,7 @@ import ToDoList from "./ToDoList";
 function App() {
   const [myItem, setMyItem] = useState("");
   const [myItems, setMyItems] = useState([]);
-  
+
 
 
   function handleChange(event) {
@@ -13,19 +13,21 @@ function App() {
   }
 
   function addItem() {
-    setMyItems(prevValue => {
-      return [...prevValue, myItem];
-    });
-    setMyItem("");
+    if (myItem) {
+      setMyItems(prevValue => {
+        return [...prevValue, myItem];
+      });
+      setMyItem("");
+    }
   }
 
   function deleteItem(id) {
-        
-      setMyItems(prevValues => {
-        return prevValues.filter((item, index) => {
-          return index !== id;
-        });
-      })
+
+    setMyItems(prevValues => {
+      return prevValues.filter((item, index) => {
+        return index !== id;
+      });
+    })
 
   }
 
